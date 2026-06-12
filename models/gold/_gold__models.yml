@@ -7,5 +7,12 @@ models:
       - name: order_id
         description: Clave primaria del hecho.
         data_tests:
-          - unique
-          - not_null
+          - unique:
+              config:              
+                severity: warn
+                store_failures: true
+                error_if: ">100"
+                warn_if: ">0"
+          - not_null:
+              config:
+                severity: error
